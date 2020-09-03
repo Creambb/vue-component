@@ -70,13 +70,4 @@ export default {
   margin-top: 10px;
   text-align: right;
 }
-.slot a {
-  color: #1890ff;
-  text-decoration: none;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
-}
 </style>
