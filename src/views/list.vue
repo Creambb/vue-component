@@ -1,5 +1,5 @@
 <template>
-  <table-list :sequence="sequence" :tableData="tableData" :columns="columns" :loading="loading" :pageObj="pageObj" :defaultSort="defaultSort">
+  <table-list :sequence="sequence" :tableData="tableData" :columns="columns" :loading="loading" :pageObj="pageObj" :defaultSort="defaultSort" :cellStyle="cellStyle">
     <el-table-column slot="action" label="操作" align="center" fixed="right">
       <template slot-scope="scope">
         <a class="action" v-if="scope.$index !== 0" @click="edit(scope.$index)">编辑</a>
@@ -21,6 +21,11 @@ export default {
   },
   data() {
     return {
+      cellStyle: function(data) {
+        if (data.columnIndex == 3) {
+          return data.row.age < 18 ? "color: #dd2727;" : "color: #03be67;";
+        }
+      },
       // 是否进行排序
       sequence: true,
       // 是否显示加载中
@@ -35,81 +40,97 @@ export default {
         {
           date: "2016-05-02",
           name: "王小虎",
+          age: 16,
           address: "上海市普陀区金沙江路 1518 弄"
         },
         {
           date: "2016-05-04",
           name: "王小虎",
+          age: 18,
           address: "上海市普陀区金沙江路 1517 弄"
         },
         {
           date: "2016-05-01",
           name: "王小虎",
+          age: 20,
           address: "上海市普陀区金沙江路 1519 弄"
         },
         {
           date: "2016-05-03",
           name: "王小虎",
+          age: 24,
           address: "上海市普陀区金沙江路 1516 弄"
         },
         {
           date: "2016-05-03",
           name: "王小虎",
+          age: 24,
           address: "上海市普陀区金沙江路 1516 弄"
         },
         {
           date: "2016-05-03",
           name: "王小虎",
+          age: 12,
+          address: "上海市普陀区金沙江路 1516 弄"
+        },
+        {
+          date: "2016-05-06",
+          name: "王小虎",
+          age: 12,
+          address: "上海市普陀区金沙江路 1516 弄"
+        },
+        {
+          date: "2016-05-07",
+          name: "王小虎",
+          age: 16,
+          address: "上海市普陀区金沙江路 1516 弄"
+        },
+        {
+          date: "2016-05-08",
+          name: "王小虎",
+          age: 16,
+          address: "上海市普陀区金沙江路 1516 弄"
+        },
+        {
+          date: "2016-05-01",
+          name: "王小虎",
+          age: 16,
           address: "上海市普陀区金沙江路 1516 弄"
         },
         {
           date: "2016-05-03",
           name: "王小虎",
+          age: 18,
           address: "上海市普陀区金沙江路 1516 弄"
         },
         {
           date: "2016-05-03",
           name: "王小虎",
+          age: 18,
           address: "上海市普陀区金沙江路 1516 弄"
         },
         {
           date: "2016-05-03",
           name: "王小虎",
+          age: 20,
           address: "上海市普陀区金沙江路 1516 弄"
         },
         {
           date: "2016-05-03",
           name: "王小虎",
+          age: 16,
           address: "上海市普陀区金沙江路 1516 弄"
         },
         {
           date: "2016-05-03",
           name: "王小虎",
+          age: 16,
           address: "上海市普陀区金沙江路 1516 弄"
         },
         {
           date: "2016-05-03",
           name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
+          age: 16,
           address: "上海市普陀区金沙江路 1516 弄"
         }
       ],
@@ -118,6 +139,7 @@ export default {
       columns: [
         { label: "日期", prop: "date", sortable: true },
         { label: "名称", prop: "name" },
+        { label: "年龄", prop: "age" },
         { label: "地址", prop: "address" },
         // 操作列
         { slot: "action" }
